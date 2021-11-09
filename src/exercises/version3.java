@@ -6,14 +6,15 @@ import java.util.Scanner;
 public class version3 {
 
     public static class randomNumberGenerator{
-        public static int generateRandomNumber(){
-
+        public static int generateRandomNumber(boolean randomlySeeded){
             int modulo = 1000;
-
+            int seed = 0;
+            if (randomlySeeded){
+                seed = generateRandomNumber(false);
+            }
             long d = new Date().getTime();
 
-            return (int) d % modulo;
-
+            return (int) (d+seed) % modulo;
         }
     }
 
@@ -25,8 +26,14 @@ public class version3 {
         //read a value fom the console
         String x = scanner.nextLine();
 
+        //set randomly seeded true if user input was "y"
+        boolean randomlySeeded = false;
+        if (x.equals("y")){
+            randomlySeeded = true;
+        }
+
         while(checkUserInput(x)){
-            System.out.println(randomNumberGenerator.generateRandomNumber());
+            System.out.println(randomNumberGenerator.generateRandomNumber(randomlySeeded));
             x = anotherNumber(scanner);
 
         }

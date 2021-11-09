@@ -12,11 +12,17 @@ public class version2 {
         //read a value fom the console
         String x = scanner.nextLine();
 
-        while(checkUserInput(x)){
-            System.out.println(generateRandomNumber());
+        //set randomly seeded true if user input was "y"
+        boolean randomlySeeded = false;
+        if (x.equals("y")){
+            randomlySeeded = true;
+        }
+
+        do{
+            System.out.println(generateRandomNumber(randomlySeeded));
             x = anotherNumber(scanner);
 
-        }
+        }while(checkUserInput(x));
     }
 
     public static String anotherNumber(Scanner scanner){
@@ -35,13 +41,15 @@ public class version2 {
     }
 
 
-    public static int generateRandomNumber(){
-
+    public static int generateRandomNumber(boolean randomlySeeded){
         int modulo = 1000;
-
+        int seed = 0;
+        if (randomlySeeded){
+            seed = generateRandomNumber(false);
+        }
         long d = new Date().getTime();
 
-        return (int) d % modulo;
+        return (int) (d+seed) % modulo;
 
     }
 }
