@@ -2,7 +2,8 @@ package exercises;
 
 import java.util.Date;
 import java.util.Scanner;
-
+// AG0706
+// Robin Hermann 108017239224, Konstantin Schauerte 108018219798, Leon Mainusch 108020225191
 public class version3 {
 
     public static class randomNumberGenerator{

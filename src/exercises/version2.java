@@ -1,7 +1,8 @@
 package exercises;
 import java.util.Scanner;
 import java.util.Date;
-
+// AG0706
+// Robin Hermann 108017239224, Konstantin Schauerte 108018219798, Leon Mainusch 108020225191
 public class version2 {
 
     public static void main(String[] args) {
