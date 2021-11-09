@@ -5,6 +5,18 @@ import java.util.Scanner;
 
 public class version3 {
 
+    public static class randomNumberGenerator{
+        public static int generateRandomNumber(){
+
+            int modulo = 1000;
+
+            long d = new Date().getTime();
+
+            return (int) d % modulo;
+
+        }
+    }
+
     public static void main(String[] args) {
 
         System.out.print("Random seed the generator? (y/n) ");
@@ -14,7 +26,7 @@ public class version3 {
         String x = scanner.nextLine();
 
         while(checkUserInput(x)){
-            System.out.println(generateRandomNumber());
+            System.out.println(randomNumberGenerator.generateRandomNumber());
             x = anotherNumber(scanner);
 
         }
@@ -36,13 +48,5 @@ public class version3 {
     }
 
 
-    public static int generateRandomNumber(){
 
-        int modulo = 1000;
-
-        long d = new Date().getTime();
-
-        return (int) d % modulo;
-
-    }
 }
