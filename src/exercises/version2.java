@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class version2 {
 
-    public static void main() {
+    public static void main(String[] args) {
 
         System.out.print("Random seed the generator? (y/n) ");
         Scanner scanner = new Scanner(System.in);
@@ -17,8 +17,6 @@ public class version2 {
             x = anotherNumber(scanner);
 
         }
-
-
     }
 
     public static String anotherNumber(Scanner scanner){

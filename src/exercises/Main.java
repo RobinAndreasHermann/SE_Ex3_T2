@@ -4,6 +4,6 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        version2.main();
+        version2.main(null);
     }
 }
