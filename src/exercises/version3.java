@@ -32,11 +32,12 @@ public class version3 {
             randomlySeeded = true;
         }
 
-        while(checkUserInput(x)){
+        do{
             System.out.println(randomNumberGenerator.generateRandomNumber(randomlySeeded));
             x = anotherNumber(scanner);
 
-        }
+        }while(checkUserInput(x));
+
     }
 
     public static String anotherNumber(Scanner scanner){

@@ -3,45 +3,79 @@ package exercises;
 import java.util.Date;
 import java.util.Scanner;
 
-public class version4 {
+class randomNumberGenerator{
 
-    public static class randomNumberGenerator{
-        public static int generateRandomNumber(boolean randomlySeeded){
-            int modulo = 1000;
-            int seed = 0;
-            if (randomlySeeded){
-                seed = generateRandomNumber(false);
-            }
-            long d = new Date().getTime();
+    private int seed;
 
-            return (int) (d+seed) % modulo;
+    randomNumberGenerator(){
+        seed = 0;
+    }
+    randomNumberGenerator(boolean randomlySeeded){
+        if (randomlySeeded){
+            seed = generateRandomNumber();
+        }
+        else{
+            seed = 0;
         }
     }
 
-    public static void main(String[] args) {
+    public int getNewRandom(){
+        return generateRandomNumber();
+    }
 
-        System.out.print("Random seed the generator? (y/n) ");
+    public void newSeed(){
+        seed = generateRandomNumber();
+    }
+
+    private int generateRandomNumber(){
+        int modulo = 1000;
+        long d = new Date().getTime();
+
+        return (int) (d+seed) % modulo;
+    }
+}
+
+
+public class version4 {
+
+
+
+    public static void main(String[] args) {
+        randomNumberGenerator rng1 = new randomNumberGenerator(false);
+        randomNumberGenerator rng2 = new randomNumberGenerator(false);
         Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Random seed the first generator? (y/n) ");
 
         //read a value fom the console
         String x = scanner.nextLine();
 
-        //set randomly seeded true if user input was "y"
-        boolean randomlySeeded = false;
+        //set rng1
         if (x.equals("y")){
-            randomlySeeded = true;
+            rng1.newSeed();
         }
 
-        while(checkUserInput(x)){
-            System.out.println(randomNumberGenerator.generateRandomNumber(randomlySeeded));
+        System.out.print("Random seed the second generator? (y/n) ");
+
+        //read a value fom the console
+        x = scanner.nextLine();
+
+        //set rng2
+        if (x.equals("y")){
+            rng2.newSeed();
+        }
+
+        do{
+            System.out.println("First random number: " + rng1.getNewRandom());
+            System.out.println("Second random number: " + rng2.getNewRandom());
             x = anotherNumber(scanner);
 
-        }
+        }while(checkUserInput(x));
     }
 
     public static String anotherNumber(Scanner scanner){
 
-        System.out.print("Another random number (y/n)? ");
+        System.out.print("New random numbers (y/n)? ");
         return scanner.nextLine();
     }
 
